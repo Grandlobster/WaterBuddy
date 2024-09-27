@@ -90,15 +90,11 @@ nlu:
     - am I talking to a bot?
     - am I talking to a human?
 
-- intent: ask_area_category
+- intent: request_area_category  # New intent for clarity
   examples: |
-    - What is my area category in [Pune](city), [Junnar](area)?
-    - I live in [Pune](city), [Junnar](area), what is my area category?
-    - Can you tell me the area category of [Junnar](area) in [Pune](city)?
-    - I want to know my area category.
-
-- intent: request_noc
-  examples: |
-    - I want a NOC.
-    - How can I get a NOC for my area?
-    - Can you help me with a NOC request?
+    - I want the category of my area.
+    - What category is my area?
+    - Can you tell me my area category?
+    - I need to know the category for [Junnar](area) in [Pune](city).
+    - What is the area category for [Pune](city), [Junnar](area)?
+    

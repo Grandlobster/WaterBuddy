@@ -83,9 +83,22 @@ stories:
     intent: goodbye
   - action: utter_goodbye
 
-- story: bot challenge
+- story: ask area category
   steps:
   - user: |
-      are you a bot?
-    intent: bot_challenge
-  - action: utter_iamabot
+      I want to know my area category.
+    intent: request_area_category
+  - action: utter_ask_state
+  - user: |
+      Maharashtra
+    intent: ask_area_category
+  - action: utter_ask_district
+  - user: |
+      Pune
+    intent: ask_area_category
+  - action: utter_ask_assessment_unit_name
+  - user: |
+      Junnar
+    intent: ask_area_category
+  - action: action_fetch_area_category  # Your action to fetch the area category
+  - action: utter_area_category_response  # Assuming you will have a response action for the category

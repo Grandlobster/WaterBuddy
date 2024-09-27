@@ -1,43 +1,46 @@
 version: "3.1"
 
 stories:
+  - story: happy path
+    steps:
+      - intent: greet
+      - action: utter_greet
+      - intent: mood_great
+      - action: utter_happy
 
-- story: happy path
-  steps:
-  - intent: greet
-  - action: utter_greet
-  - intent: mood_great
-  - action: utter_happy
+  - story: sad path 1
+    steps:
+      - intent: greet
+      - action: utter_greet
+      - intent: mood_unhappy
+      - action: utter_cheer_up
+      - action: utter_did_that_help
+      - intent: affirm
+      - action: utter_happy
 
-- story: sad path 1
-  steps:
-  - intent: greet
-  - action: utter_greet
-  - intent: mood_unhappy
-  - action: utter_cheer_up
-  - action: utter_did_that_help
-  - intent: affirm
-  - action: utter_happy
+  - story: sad path 2
+    steps:
+      - intent: greet
+      - action: utter_greet
+      - intent: mood_unhappy
+      - action: utter_cheer_up
+      - action: utter_did_that_help
+      - intent: deny
+      - action: utter_goodbye
 
-- story: sad path 2
-  steps:
-  - intent: greet
-  - action: utter_greet
-  - intent: mood_unhappy
-  - action: utter_cheer_up
-  - action: utter_did_that_help
-  - intent: deny
-  - action: utter_goodbye
-
-- story: ask area category
-  steps:
-    - intent: ask_area_category
-    - action: utter_ask_city
-    - action: utter_ask_area
-    - action: action_fetch_area_category
-
-- story: request NOC
-  steps:
-    - intent: request_noc
-    - action: utter_ask_city
-    - action: utter_ask_area
+  - story: ask area category
+    steps:
+      - intent: request_area_category  # Updated to match the intent
+      - action: utter_ask_state         # Asking for state
+      - slot_was_set:
+          - state: null
+      - intent: inform_state            # User informs state
+      - action: utter_ask_district      # Asking for district
+      - slot_was_set:
+          - district: null
+      - intent: inform_district         # User informs district
+      - action: utter_ask_assessment_unit_name  # Asking for Taluka
+      - slot_was_set:
+          - assessment_unit_name: null
+      - intent: inform_assessment_unit_name  # User informs Taluka
+      - action: action_query_category    # Running the query to fetch category
